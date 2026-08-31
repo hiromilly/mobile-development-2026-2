@@ -1,8 +1,0 @@
-com.celia.serviceplus.app-pngs-0 C:\Users\aluno\Documents\GitHub\mobile-development-2026-2\projects\team-03\app\app\build\generated\res\pngs\debug
-com.celia.serviceplus.app-updated_navigation_xml-1 C:\Users\aluno\Documents\GitHub\mobile-development-2026-2\projects\team-03\app\app\build\generated\updated_navigation_xml\debug
-com.celia.serviceplus.app-packageDebugResources-2 C:\Users\aluno\Documents\GitHub\mobile-development-2026-2\projects\team-03\app\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.celia.serviceplus.app-packageDebugResources-3 C:\Users\aluno\Documents\GitHub\mobile-development-2026-2\projects\team-03\app\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.celia.serviceplus.app-debug-4 C:\Users\aluno\Documents\GitHub\mobile-development-2026-2\projects\team-03\app\app\build\intermediates\merged_res\debug\mergeDebugResources
-com.celia.serviceplus.app-debug-5 C:\Users\aluno\Documents\GitHub\mobile-development-2026-2\projects\team-03\app\app\src\debug\res
-com.celia.serviceplus.app-main-6 C:\Users\aluno\Documents\GitHub\mobile-development-2026-2\projects\team-03\app\app\src\main\res
-gradleHome-0 C:\Users\aluno\.gradle
