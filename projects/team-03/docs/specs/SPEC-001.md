@@ -1,102 +1,175 @@
-# SPEC-001 — Definição do Produto WifiPulse e Primeira Tela
+# SPEC-001 — Definição do Produto Wi-Fi Mapper e Primeira Tela
 
 > **Equipe:** Team 03  
 > **Integrantes:** Célia Hiromi (@hiromilly) e Geovanna Gaspar (@gegwspar)  
 > **Sprint:** SPRINT 01  
-> **Status:** Em Andamento  
+> **Status:** Validado  
+> **Documento da Sprint:** [`SPRINT-01.md`](../../SPRINT-01.md)
 
 ---
 
 ## 1. Contexto
 
-Pessoas que trabalham ou estudam em regime domiciliar dependem diariamente da estabilidade da rede Wi-Fi. No entanto, instabilidades e variações na qualidade do sinal causam interrupções em chamadas de vídeo, downloads e navegação em geral. A maioria dos usuários não sabe se o problema é a distância do roteador, interferências físicas ou falha na operadora. Os aplicativos existentes de análise de rede no mercado são técnicos em excesso, cheios de gráficos poluídos e anúncios intrusivos. O **WifiPulse** surge para entregar uma experiência limpa, direta e amigável para monitoramento e diagnóstico de conexões Wi-Fi.
+**Problema:**  
+Pessoas que trabalham ou estudam em regime domiciliar dependem diretamente da estabilidade e intensidade da rede Wi-Fi. No entanto, instabilidades e variações na qualidade do sinal causam travamentos em chamadas de vídeo, lentidão em downloads e interrupções frequentes. A maioria dos usuários não consegue diagnosticar se o problema decorre da distância do roteador, de interferências estruturais ou de instabilidade externa da operadora. Os aplicativos existentes no mercado são técnicos em excesso, repletos de gráficos complexos e sobrecarregados de propagandas.
+
+**Usuário / Ator:**  
+Estudantes, profissionais em home office e usuários domésticos que desejam diagnosticar a qualidade da sua rede sem precisar de conhecimento técnico aprofundado em redes.
+
+**Contexto de Uso:**  
+Ao perceber lentidão ou quedas de sinal em diferentes cômodos da residência ou escritório, o usuário abre o aplicativo para iniciar uma verificação rápida e entender a situação da sua rede.
 
 ---
 
-## 2. Tarefa
+## 2. Objetivo
 
-Definir formalmente o produto **WifiPulse** e implementar a primeira tela da aplicação utilizando **Kotlin** e **Jetpack Compose**, contendo identidade visual clara, nome da aplicação, slogan explicativo e um botão de ação primária que inicia a jornada do usuário.
-
----
-
-## 3. Requisitos Funcionais
-
-- **RF-01 — Identidade do Produto:** A tela deve exibir o nome do aplicativo (**WifiPulse**) com tipografia de destaque (`headlineMedium` ou `headlineLarge`) e um ícone temático de sinal Wi-Fi.
-- **RF-02 — Proposta de Valor:** A tela deve conter uma frase descritiva (slogan) informando o objetivo do app de forma acessível ao usuário comum.
-- **RF-03 — Ação Primária:** A tela deve apresentar um botão de destaque visual com o texto *"Iniciar Monitoramento"* ou *"Verificar Conexão"*.
-- **RF-04 — Organização Visual:** Os elementos da interface devem estar centralizados, com espaçamentos proporcionais e suporte ao tema do sistema (Material Design 3).
+O objetivo desta especificação é definir formalmente o produto **Wi-Fi Mapper** e implementar a primeira tela da aplicação em Kotlin com Jetpack Compose, contendo a identidade do produto, slogan explicativo, elemento visual representativo de sinal e um botão de ação primária destacado que orienta o início do fluxo de uso.
 
 ---
 
-## 4. Restrições Técnicas
+## 3. Cenário do Usuário (User Scenario)
 
-- **Linguagem:** Kotlin.
-- **UI Framework:** Jetpack Compose (sem uso de layouts legados em XML).
-- **Design System:** Material Theme 3 (`MaterialTheme.colorScheme`).
-- **Versão Mínima do Android:** Android API 24 (Android 7.0) ou superior.
-- **Arquitetura:** Componente desacoplado `WelcomeScreen` preparado para receber navegação futura na Sprint 03.
+**Dado** que o usuário instalou e abriu o aplicativo **Wi-Fi Mapper** em seu smartphone Android,  
+**Quando** a tela inicial for carregada,  
+**Então** o usuário deve visualizar claramente o nome da aplicação (**Wi-Fi Mapper**), o slogan *"Encontre os pontos cegos do seu Wi-Fi e melhore sua conexão em qualquer cômodo."*, o container ilustrativo com barras de intensidade de sinal e o botão primário *"Iniciar Verificação de Sinal"*.
 
 ---
 
-## 5. Critérios de Aceitação
+## 4. Requisitos Funcionais
 
-- **CA-01:** Ao abrir o aplicativo, o nome **WifiPulse** deve estar visível e centralizado no topo do card principal.
-- **CA-02:** O slogan ou descrição da proposta de valor deve estar claramente legível abaixo do nome.
-- **CA-03:** O botão de ação primária deve ser clicável e apresentar efeito de clique (ripple).
-- **CA-04:** A tela deve se adaptar adequadamente em emuladores e aparelhos físicos de diferentes densidades sem truncar textos.
-- **CA-05:** O projeto deve compilar sem warnings críticos ou erros de layout.
+### RF-01 — Identidade Visual do Produto
+A interface da primeira tela deve exibir o nome do aplicativo (**Wi-Fi Mapper**) com tipografia destacada (`fontSize = 32.sp`, `FontWeight.Bold`).
 
----
+### RF-02 — Slogan e Proposta de Valor
+A interface deve apresentar a mensagem textual concisa: *"Encontre os pontos cegos do seu Wi-Fi e melhore sua conexão em qualquer cômodo."* comunicando o objetivo do app de forma clara e acessível.
 
-## 6. Procedimento de Validação
+### RF-03 — Elemento Visual de Sinal
+A tela deve apresentar um card centralizado com cantos arredondados contendo uma ilustração temática em barras representando a intensidade do sinal Wi-Fi.
 
-1. Executar `./gradlew assembleDebug` para confirmar a compilação bem-sucedida.
-2. Abrir o aplicativo no emulador Android ou celular físico.
-3. Verificar a presença dos componentes: Nome, Slogan, Ícone e Botão.
-4. Tocar no botão primário para testar a responsividade e o feedback tátil/visual.
-5. Capturar a tela e salvar o arquivo em: `projects/team-03/evidence/sprint-01/first-screen.png`.
+### RF-04 — Botão de Ação Primária
+A interface deve disponibilizar um botão de destaque visual com o texto *"Iniciar Verificação de Sinal"*, contendo feedback de toque visual (ripple) ao ser acionado.
 
 ---
 
-## 7. Registro de Uso de Inteligência Artificial (LLM)
+## 5. Restrições Técnicas
 
-### Ferramenta
-- Claude 3.7 / Gemini / ChatGPT
+### Tecnologias Obrigatórias:
+- **Linguagem:** Kotlin
+- **UI Framework:** Jetpack Compose (Material Design 3)
+- **IDE:** Android Studio (Ladybug 2024.2.1 ou superior)
 
-### Finalidade
-- Auxílio na estruturação da declaração do problema centrado na necessidade do usuário e validação dos critérios de aceitação.
-
-### Conteúdo Gerado
-- Sugestão de requisitos funcionais e texto da proposta de valor.
-
-### Revisão e Alterações Humanas
-- Adaptação das frases para o tom de voz do produto em português e definição das restrições técnicas específicas do projeto.
-
----
-
-## 8. Fora do Escopo (Out of Scope)
-
-- Leitura de permissões perigosas do sistema Android (planejado para a Sprint 06).
-- Medição de taxa de download/upload e testes de ping avançados (planejado para sprints futuras).
-- Armazenamento em banco de dados local (planejado para a Sprint 05).
-- Navegação entre múltiplas telas (planejado para a Sprint 03).
+### Restrições do Projeto:
+- **SDK Mínimo:** API 24 (Android 7.0)
+- **SDK Alvo:** API 34+
+- **Layouts Legados:** Não utilizar XML layouts para telas de UI.
+- **Escopo desta Sprint:** Não utilizar chamadas a APIs de rede externas ou banco de dados nesta etapa.
 
 ---
 
-## 9. Entregáveis
+## 6. Fora do Escopo (Out of Scope)
 
-- `projects/team-03/app/` (Código fonte em Compose)
-- `projects/team-03/SPRINT-01.md` (Relatório da Sprint 01)
-- `projects/team-03/docs/specs/SPEC-001.md` (Esta especificação técnica)
-- `projects/team-03/evidence/sprint-01/first-screen.png` (Evidência visual)
+Os seguintes itens não fazem parte do escopo da Sprint 01 e serão abordados em sprints posteriores:
+- Coleta de permissões de localização/Wi-Fi em segundo plano (planejado para a Sprint 06).
+- Medição e cálculo dinâmico de intensidade de sinal com gráficos (planejado para a Sprint 02).
+- Navegação entre múltiplas telas e abas (planejado para a Sprint 03).
+- Formulários de cadastro de ambientes e filtros (planejado para a Sprint 04).
+- Persistência em banco de dados SQLite/Room (planejado para a Sprint 05).
 
 ---
 
-## 10. Status
+## 7. Critérios de Aceitação
 
-- [x] Especificação técnica elaborada
-- [ ] Implementação de código da tela finalizada
-- [ ] Critérios de aceitação validados no emulador/aparelho
-- [ ] Captura de evidência anexada
-- [ ] Commit semântico realizado
-- [ ] Pull Request da Sprint 01 aberto
+### AC-01 — Nome do Aplicativo Visível
+**Requisito relacionado:** RF-01  
+**Condição:** Ao abrir a tela, o título **Wi-Fi Mapper** deve estar visível, centralizado e legível com estilo tipográfico de destaque.
+
+### AC-02 — Slogan e Proposta de Valor Acessíveis
+**Requisito relacionado:** RF-02  
+**Condição:** O texto descritivo do slogan deve estar posicionado abaixo do título, com contraste adequado e tipografia legível.
+
+### AC-03 — Elemento Visual Central Apresentado
+**Requisito relacionado:** RF-03  
+**Condição:** A interface deve renderizar o container visual com cantos arredondados e as barras de intensidade de sinal.
+
+### AC-04 — Botão de Ação Primária Funcional e Destacado
+**Requisito relacionado:** RF-04  
+**Condição:** O botão *"Iniciar Verificação de Sinal"* deve estar visível com largura proporcional, cores do tema e feedback visual de clique.
+
+### AC-05 — Compilação e Execução Estável
+**Requisitos relacionados:** RF-01, RF-02, RF-03, RF-04  
+**Condição:** O aplicativo deve compilar com `./gradlew assembleDebug` e rodar em emuladores Android (API 24+) sem gerar falhas em tempo de execução (*no crash*).
+
+---
+
+## 8. Rastreabilidade dos Requisitos
+
+| Requisito | Implementado Em | Critério de Aceitação | Evidência |
+| :--- | :--- | :--- | :--- |
+| **RF-01** | `MainActivity.kt` (`WifiMapperHomeScreen`) | AC-01 | `evidence/sprint-01/first-screen.png` |
+| **RF-02** | `MainActivity.kt` (`WifiMapperHomeScreen`) | AC-02 | `evidence/sprint-01/first-screen.png` |
+| **RF-03** | `MainActivity.kt` (`WifiMapperHomeScreen`) | AC-03 | `evidence/sprint-01/first-screen.png` |
+| **RF-04** | `MainActivity.kt` (`WifiMapperHomeScreen`) | AC-04 | `evidence/sprint-01/first-screen.png` |
+
+---
+
+## 9. Plano de Implementação
+
+### Componentes Criados/Modificados:
+- `MainActivity.kt`: Implementação do Composable `WifiMapperHomeScreen` com `Scaffold`, `Column`, `Box`, `Row`, `Text`, `Button` e espaçamentos com `Arrangement.SpaceEvenly`.
+- `Theme.kt`: Ajuste das cores e tipografia do Material Design 3.
+
+### Fluxo de Interação Previsto:
+```text
+[Abertura do App]
+      ↓
+[Visualização do Nome, Slogan e Ilustração de Sinal]
+      ↓
+[Toque no Botão "Iniciar Verificação de Sinal"]
+      ↓
+[Feedback Visual de Toque (Ripple)]
+```
+
+---
+
+## 10. Resultados da Validação
+
+| Critério | Resultado | Observações |
+| :--- | :--- | :--- |
+| **AC-01** | **PASS** | Título "Wi-Fi Mapper" renderizado com destaque e alinhamento central. |
+| **AC-02** | **PASS** | Slogan *"Encontre os pontos cegos do seu Wi-Fi..."* legível e centralizado. |
+| **AC-03** | **PASS** | Container visual de intensidade de sinal com cantos arredondados renderizado. |
+| **AC-04** | **PASS** | Botão primário *"Iniciar Verificação de Sinal"* estilizado e responsivo ao toque. |
+| **AC-05** | **PASS** | Projeto compilando e executando sem crash no emulador Android. |
+
+### Ambiente de Validação:
+- **Dispositivo:** Emulador Android (Google Pixel 8)
+- **Versão do Android:** API 34 (Android 14)
+- **Resultado do Build:** PASS
+- **Execução do App:** PASS
+
+---
+
+## 11. Evidência de Validação
+
+- **Evidência Visual:** `projects/team-03/evidence/sprint-01/first-screen.png`
+- **Referência no Documento da Sprint:** [`SPRINT-01.md`](../../SPRINT-01.md#4-validação-e-evidência)
+
+---
+
+## 12. Desenvolvimento com Apoio de IA
+
+- **Ferramenta Utilizada:** Antigravity AI / Gemini 3.7 Flash
+- **Uso:** Auxílio na estruturação dos requisitos funcionais, critérios de aceitação e arquitetura da interface com Jetpack Compose.
+- **Revisão Humana:** Validação e adaptação de todos os textos para o contexto em português do **Wi-Fi Mapper** e verificação de compatibilidade com o Material Design 3.
+
+---
+
+## 13. Status da Especificação
+
+- [x] Contexto e objetivo definidos com foco na dor real do usuário.
+- [x] Requisitos funcionais completos e observáveis.
+- [x] Restrições técnicas e fora de escopo explicitados.
+- [x] Critérios de aceitação mensuráveis e testáveis.
+- [x] Matriz de rastreabilidade de requisitos preenchida.
+- [x] Validação executada e documentada.
+- [x] Todas as integrantes compreendem a especificação e a implementação.
