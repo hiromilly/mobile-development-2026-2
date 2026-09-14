@@ -16,7 +16,7 @@
 >  *Exemplo forte:* Descrever a dificuldade que as pessoas têm com quedas de sinal, instabilidade ou dificuldade para entender a qualidade da conexão em casa ou no trabalho.
 
 ### 💡 [SUGESTÃO DE TEXTO PARA O PROJETO WIFI]:
-- **Nome do Produto:** **WifiPulse** *(ou WifiMaster / WifiCheck)*
+- **Nome do Produto:** **Wi-fi Mapper** *(ou WifiMaster / WifiCheck)*
 - **Declaração do Problema:**  
   Usuários domésticos e profissionais em regime de *home office* frequentemente sofrem com quedas inesperadas de internet e lentidão durante reuniões ou estudos, tendo dificuldade em identificar se o problema é o sinal fraco do roteador em determinado cômodo ou uma falha de conexão externa. Os aplicativos tradicionais de análise de rede disponíveis são excessivamente técnicos, poluídos de anúncios e complexos para o usuário comum.
 - **Público-Alvo:**  
