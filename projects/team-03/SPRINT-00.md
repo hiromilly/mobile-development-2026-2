@@ -1,4 +1,4 @@
-﻿# SPRINT 00 — Development Environment
+# SPRINT 00 — Development Environment
 
 ## Team Information
 - **Team:** Team 03
@@ -7,14 +7,18 @@
   - Geovanna Gaspar (@gegwspar)
 
 ## Development Environment Status
-- **Android Studio:** Installed and configured
-- **Android SDK:** Configured
+- **Android Studio:** Installed and configured (Ladybug 2024.2.1)
+- **Android SDK:** Configured (API 34 / 35)
 - **Android Emulator / Device:** Configured and operational
-- **Technology Stack:** Kotlin, Jetpack Compose, Gradle
+- **Technology Stack:** Kotlin, Jetpack Compose, Gradle (Kotlin DSL .kts)
 
 ## Difficulties Encountered
 - Initial setup and alignment of Git/GitHub workflow (Fork, Upstream synchronization, and Pull Request submission).
 - Environment cleanup and proper `.gitignore` configuration for Android Studio build artifacts.
+- Multi-platform alignment (Linux and Windows setup between team members).
+
+## Evidence
+- `evidence/sprint-00/android-running.png`
 
 ## Acceptance Criteria
 - [x] AC-01 — Team members are identified.
