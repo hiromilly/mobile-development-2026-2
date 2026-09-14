@@ -3,7 +3,8 @@
 ## Team Information
 - **Team:** Team 03
 - **Members:**
-  - Célia (@hiromilly)
+  - Célia Hiromi (@hiromilly)
+  - Geovanna Gaspar] (@gegwspar)
 
 ## Development Environment Status
 - **Android Studio:** Installed and configured
