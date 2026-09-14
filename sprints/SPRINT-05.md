@@ -1,98 +1,76 @@
-# SPRINT 01 — Product Definition & First Screen
+# SPRINT 05 — Local Persistence & Data
 
-**Deadline:** 14/09/2026  
-**Purpose:** transform an app idea into a defined product, write the first formal specification, and implement the first screen with Jetpack Compose.
+**Deadline:** 09/11/2026  
+**Purpose:** make useful application data survive beyond temporary screen state.
 
 ## Learning Goals
 
-- problem, target users, and product goal;
-- functional requirements (FR);
-- acceptance criteria (AC);
-- Sprint scope and out-of-scope decisions;
-- basic Jetpack Compose;
-- workflow: **SPEC → BUILD → VALIDATE → EXPLAIN → COMMIT**.
+- transient state vs persistent data;
+- local storage choices;
+- basic data models;
+- saving and reading data;
+- restart validation;
+- separation between UI and data responsibilities.
+
+## Persistence Choice
+
+Use **Room** for structured records (tasks, notes, favorites, places, registrations, history). Use **DataStore** for small preference-like values (theme, onboarding flag, simple settings). The instructor may require Room when the product clearly needs structured records.
 
 ## Required Structure
 
 ```text
 projects/team-XX/
 ├── app/
-├── SPRINT-01.md
-├── docs/specs/SPEC-001.md
-└── evidence/sprint-01/first-screen.png
+├── SPRINT-05.md
+├── docs/specs/SPEC-005.md
+└── evidence/sprint-05/
+    ├── data-created.png
+    └── data-restored.png
 ```
 
 ## Step-by-Step
 
-### 1. Define the Product
+### 1. Create `team-XX/sprint-05`
 
-In `SPRINT-01.md`, document:
+Synchronize `main` first.
 
-```text
-Product Name
-Problem
-Target Users
-Product Goal
-Initial Features
-```
+### 2. Identify What Must Persist
 
-A problem must express a user need, not only a domain.
+Answer: what is stored, why it must persist, when it is written, when it is read, and how the user observes it.
 
-Weak: `We will create a gym app.`  
-Better: `People beginning a fitness routine may have difficulty organizing and tracking simple workouts consistently.`
+### 3. Write SPEC-005
 
-### 2. Create SPEC-001
+Define data fields, create/update behavior, read behavior, persistence expectation, visible result, and ACs.
 
-Create `projects/team-XX/docs/specs/SPEC-001.md` using `templates/SPEC-TEMPLATE.md`.
+### 4. Define the Data Model
 
-It must contain context, task, functional requirements, constraints, measurable acceptance criteria, validation procedure, and out-of-scope items.
+For Room, define the minimum entity/data structure and access operations. For DataStore, define only the necessary preference values. Do not invent fields not required by the SPEC.
 
-### 3. Define the First Screen
+### 5. Implement Save and Read
 
-It must contain at least:
-
-- application name;
-- one description or slogan;
-- one primary action button;
-- visually organized content;
-- spacing and alignment.
-
-Navigation is not required yet.
-
-### 4. Implement with Jetpack Compose
-
-Use, when appropriate:
+Examples:
 
 ```text
-@Composable
-Text
-Button
-Column
-Row
-Spacer
-Modifier
-padding
-fillMaxSize
-Arrangement
-Alignment
-MaterialTheme
+Create item → restart → item still exists
+Favorite place → restart → favorite remains
+Change setting → reopen → setting remains
 ```
 
-### 5. Build, Run, and Validate
+### 6. Organize Data Logic
 
-1. Build the app.
-2. Run on emulator or physical device.
-3. Compare the visible result with SPEC-001.
-4. Check every acceptance criterion.
-5. Fix discrepancies before submission.
+Avoid placing all persistence code directly inside a button's `onClick`. Keep UI code understandable.
 
-### 6. Add Evidence
+### 7. Validate Persistence
 
-Save `projects/team-XX/evidence/sprint-01/first-screen.png` and reference it from `SPRINT-01.md`.
+Create/change data, confirm it, restart the app, reopen it, and confirm the expected data remains.
 
-### 7. Explain the Implementation
+### 8. Add Evidence
 
-The team must be able to show which requirement is represented by each visible UI element, where it appears in code, and how its acceptance criterion was validated.
+Save `data-created.png` and `data-restored.png`.
+
+### 9. Complete the Sprint Report
+
+Explain selected persistence mechanism, reason, data model, save flow, read flow, and restart result.
 
 ## Rules for Using an LLM
 
@@ -139,29 +117,29 @@ Do not submit code that no team member can explain. During review, any member ma
 
 ### Suggested LLM Uses
 
-Use the LLM to improve a problem statement, review FRs/ACs, explain Compose components, review a small Composable, or diagnose a real build error. Do not ask it to build the entire app at once.
+Ask the LLM to compare Room vs DataStore for the team's real requirement, explain Entity/DAO/Database concepts, review a small data model, identify persistence edge cases, or interpret a real Room/KSP/Gradle error.
 
 ## Acceptance Criteria
 
-- AC-01 — Product name, problem, target users, and goal are documented.
-- AC-02 — `SPEC-001.md` exists.
-- AC-03 — SPEC contains functional requirements and measurable ACs.
-- AC-04 — First screen uses Jetpack Compose.
-- AC-05 — App name is visible.
-- AC-06 — Description/slogan is visible.
-- AC-07 — Primary action button is visible.
+- AC-01 — SPEC-005 exists.
+- AC-02 — Appropriate persistence mechanism selected.
+- AC-03 — Required persistent data is modeled.
+- AC-04 — Data can be saved/changed.
+- AC-05 — Data can be read and displayed/used.
+- AC-06 — Expected data survives app restart.
+- AC-07 — Previous functionality remains operational.
 - AC-08 — App builds successfully.
-- AC-09 — App runs without crashing.
-- AC-10 — Implementation satisfies SPEC-001.
-- AC-11 — Team can explain the implementation.
+- AC-09 — Persistence evidence exists.
+- AC-10 — Team can explain the data flow.
 
 ## Deliverables
 
 ```text
 projects/team-XX/app/
-projects/team-XX/SPRINT-01.md
-projects/team-XX/docs/specs/SPEC-001.md
-projects/team-XX/evidence/sprint-01/first-screen.png
+projects/team-XX/SPRINT-05.md
+projects/team-XX/docs/specs/SPEC-005.md
+projects/team-XX/evidence/sprint-05/data-created.png
+projects/team-XX/evidence/sprint-05/data-restored.png
 ```
 
 ## Submission Rules
@@ -181,13 +159,13 @@ Never modify another team's folder.
 Synchronize the fork with the current course `main`, then create the branch **before** starting the Sprint work:
 
 ```text
-team-XX/sprint-01
+team-XX/sprint-05
 ```
 
 Example for Team 03:
 
 ```text
-team-03/sprint-01
+team-03/sprint-05
 ```
 
 ### Commits
@@ -195,10 +173,10 @@ team-03/sprint-01
 Use small, meaningful commits. Recommended pattern:
 
 ```text
-docs: define SPEC-001
+docs: define SPEC-005
 feat: implement <feature>
 fix: correct <problem>
-docs: add Sprint 01 validation evidence
+docs: add Sprint 05 validation evidence
 ```
 
 Avoid messages such as `update`, `changes`, `final`, `work`, or `commit 1`.
@@ -210,26 +188,26 @@ Push/publish the Sprint branch to the team's fork and open **one Pull Request** 
 ```text
 base repository: brenofeliix/mobile-development-2026-2
 base branch: main
-compare branch: team-XX/sprint-01
+compare branch: team-XX/sprint-05
 ```
 
 PR title:
 
 ```text
-[Sprint 01] Team XX — Product Definition & First Screen
+[Sprint 05] Team XX — Local Persistence & Data
 ```
 
 PR description:
 
 ```md
 ## Sprint
-SPRINT 01 — Product Definition & First Screen
+SPRINT 05 — Local Persistence & Data
 
 ## Summary
 Briefly describe what was implemented.
 
 ## Specification
-Link SPEC-001.
+Link SPEC-005.
 
 ## Validation
 - [ ] Application builds successfully.
@@ -248,10 +226,9 @@ If changes are requested, continue on the **same branch**. Commit and push the c
 
 ## Definition of Done
 
-- [ ] Product concept documented.
-- [ ] SPEC-001 complete.
-- [ ] First screen implemented.
-- [ ] Build/run validated.
-- [ ] Evidence included.
-- [ ] AI usage documented.
+- [ ] SPEC-005 complete.
+- [ ] Persistence implemented.
+- [ ] Save/read/restart validated.
+- [ ] Previous functionality preserved.
+- [ ] Evidence and AI usage documented.
 - [ ] PR submitted.

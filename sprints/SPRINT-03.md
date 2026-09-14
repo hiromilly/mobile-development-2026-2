@@ -1,98 +1,66 @@
-# SPRINT 01 — Product Definition & First Screen
+# SPRINT 03 — Navigation & Multiple Screens
 
-**Deadline:** 14/09/2026  
-**Purpose:** transform an app idea into a defined product, write the first formal specification, and implement the first screen with Jetpack Compose.
+**Deadline:** 05/10/2026  
+**Purpose:** evolve the app from a single-screen prototype into a multi-screen Android application.
 
 ## Learning Goals
 
-- problem, target users, and product goal;
-- functional requirements (FR);
-- acceptance criteria (AC);
-- Sprint scope and out-of-scope decisions;
-- basic Jetpack Compose;
-- workflow: **SPEC → BUILD → VALIDATE → EXPLAIN → COMMIT**.
+- screen responsibilities;
+- Navigation Compose;
+- routes and destinations;
+- `NavHost` and `NavController`;
+- forward/back navigation;
+- separation of UI into Composables.
 
 ## Required Structure
 
 ```text
 projects/team-XX/
 ├── app/
-├── SPRINT-01.md
-├── docs/specs/SPEC-001.md
-└── evidence/sprint-01/first-screen.png
+├── SPRINT-03.md
+├── docs/specs/SPEC-003.md
+└── evidence/sprint-03/
+    ├── screen-a.png
+    └── screen-b.png
 ```
 
 ## Step-by-Step
 
-### 1. Define the Product
+### 1. Create `team-XX/sprint-03`
 
-In `SPRINT-01.md`, document:
+Synchronize `main` first.
 
-```text
-Product Name
-Problem
-Target Users
-Product Goal
-Initial Features
-```
+### 2. Define a Real Navigation Need
 
-A problem must express a user need, not only a domain.
+Identify at least two meaningful product screens, such as `Welcome → Home`, `List → Details`, or `Dashboard → Form`.
 
-Weak: `We will create a gym app.`  
-Better: `People beginning a fitness routine may have difficulty organizing and tracking simple workouts consistently.`
+### 3. Write SPEC-003
 
-### 2. Create SPEC-001
+Describe source screen, user action, destination, essential destination content, expected back behavior, and ACs.
 
-Create `projects/team-XX/docs/specs/SPEC-001.md` using `templates/SPEC-TEMPLATE.md`.
+### 4. Separate Screens
 
-It must contain context, task, functional requirements, constraints, measurable acceptance criteria, validation procedure, and out-of-scope items.
+Create separate Composable functions/files where appropriate. Avoid keeping the entire UI inside one giant `MainActivity.kt`.
 
-### 3. Define the First Screen
+### 5. Add Navigation Compose
 
-It must contain at least:
+Implement a navigation controller, navigation host, at least two destinations, and one user action that navigates between them.
 
-- application name;
-- one description or slogan;
-- one primary action button;
-- visually organized content;
-- spacing and alignment.
-
-Navigation is not required yet.
-
-### 4. Implement with Jetpack Compose
-
-Use, when appropriate:
+### 6. Validate the Flow
 
 ```text
-@Composable
-Text
-Button
-Column
-Row
-Spacer
-Modifier
-padding
-fillMaxSize
-Arrangement
-Alignment
-MaterialTheme
+Launch → initial screen → action → destination → back → previous screen
 ```
 
-### 5. Build, Run, and Validate
+Also verify that Sprint 02 behavior still works.
 
-1. Build the app.
-2. Run on emulator or physical device.
-3. Compare the visible result with SPEC-001.
-4. Check every acceptance criterion.
-5. Fix discrepancies before submission.
+### 7. Add Evidence
 
-### 6. Add Evidence
+Save at least two screen captures in `evidence/sprint-03/`.
 
-Save `projects/team-XX/evidence/sprint-01/first-screen.png` and reference it from `SPRINT-01.md`.
+### 8. Complete the Sprint Report
 
-### 7. Explain the Implementation
-
-The team must be able to show which requirement is represented by each visible UI element, where it appears in code, and how its acceptance criterion was validated.
+Explain why each screen exists, what route connects them, where navigation is triggered, and how back navigation was validated.
 
 ## Rules for Using an LLM
 
@@ -139,29 +107,29 @@ Do not submit code that no team member can explain. During review, any member ma
 
 ### Suggested LLM Uses
 
-Use the LLM to improve a problem statement, review FRs/ACs, explain Compose components, review a small Composable, or diagnose a real build error. Do not ask it to build the entire app at once.
+Ask the LLM to explain `NavController`, `NavHost`, route design, back stack, or to review a small navigation graph. Use real error messages when requesting debugging help.
 
 ## Acceptance Criteria
 
-- AC-01 — Product name, problem, target users, and goal are documented.
-- AC-02 — `SPEC-001.md` exists.
-- AC-03 — SPEC contains functional requirements and measurable ACs.
-- AC-04 — First screen uses Jetpack Compose.
-- AC-05 — App name is visible.
-- AC-06 — Description/slogan is visible.
-- AC-07 — Primary action button is visible.
-- AC-08 — App builds successfully.
-- AC-09 — App runs without crashing.
-- AC-10 — Implementation satisfies SPEC-001.
-- AC-11 — Team can explain the implementation.
+- AC-01 — SPEC-003 exists.
+- AC-02 — At least two meaningful screens exist.
+- AC-03 — Navigation Compose is used.
+- AC-04 — User action navigates between destinations.
+- AC-05 — Destination content is visible.
+- AC-06 — Back navigation behaves correctly.
+- AC-07 — Previous Sprint functionality remains operational.
+- AC-08 — App builds/runs without crashing.
+- AC-09 — Navigation evidence exists.
+- AC-10 — Team can explain the navigation graph.
 
 ## Deliverables
 
 ```text
 projects/team-XX/app/
-projects/team-XX/SPRINT-01.md
-projects/team-XX/docs/specs/SPEC-001.md
-projects/team-XX/evidence/sprint-01/first-screen.png
+projects/team-XX/SPRINT-03.md
+projects/team-XX/docs/specs/SPEC-003.md
+projects/team-XX/evidence/sprint-03/screen-a.png
+projects/team-XX/evidence/sprint-03/screen-b.png
 ```
 
 ## Submission Rules
@@ -181,13 +149,13 @@ Never modify another team's folder.
 Synchronize the fork with the current course `main`, then create the branch **before** starting the Sprint work:
 
 ```text
-team-XX/sprint-01
+team-XX/sprint-03
 ```
 
 Example for Team 03:
 
 ```text
-team-03/sprint-01
+team-03/sprint-03
 ```
 
 ### Commits
@@ -195,10 +163,10 @@ team-03/sprint-01
 Use small, meaningful commits. Recommended pattern:
 
 ```text
-docs: define SPEC-001
+docs: define SPEC-003
 feat: implement <feature>
 fix: correct <problem>
-docs: add Sprint 01 validation evidence
+docs: add Sprint 03 validation evidence
 ```
 
 Avoid messages such as `update`, `changes`, `final`, `work`, or `commit 1`.
@@ -210,26 +178,26 @@ Push/publish the Sprint branch to the team's fork and open **one Pull Request** 
 ```text
 base repository: brenofeliix/mobile-development-2026-2
 base branch: main
-compare branch: team-XX/sprint-01
+compare branch: team-XX/sprint-03
 ```
 
 PR title:
 
 ```text
-[Sprint 01] Team XX — Product Definition & First Screen
+[Sprint 03] Team XX — Navigation & Multiple Screens
 ```
 
 PR description:
 
 ```md
 ## Sprint
-SPRINT 01 — Product Definition & First Screen
+SPRINT 03 — Navigation & Multiple Screens
 
 ## Summary
 Briefly describe what was implemented.
 
 ## Specification
-Link SPEC-001.
+Link SPEC-003.
 
 ## Validation
 - [ ] Application builds successfully.
@@ -248,10 +216,9 @@ If changes are requested, continue on the **same branch**. Commit and push the c
 
 ## Definition of Done
 
-- [ ] Product concept documented.
-- [ ] SPEC-001 complete.
-- [ ] First screen implemented.
-- [ ] Build/run validated.
-- [ ] Evidence included.
-- [ ] AI usage documented.
+- [ ] SPEC-003 complete.
+- [ ] At least two screens exist.
+- [ ] Navigation and back behavior work.
+- [ ] Previous functionality preserved.
+- [ ] Evidence and AI usage documented.
 - [ ] PR submitted.

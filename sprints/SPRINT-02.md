@@ -1,98 +1,72 @@
-# SPRINT 01 — Product Definition & First Screen
+# SPRINT 02 — State & User Interaction
 
-**Deadline:** 14/09/2026  
-**Purpose:** transform an app idea into a defined product, write the first formal specification, and implement the first screen with Jetpack Compose.
+**Deadline:** 28/09/2026  
+**Work session:** 26/09/2026  
+**Purpose:** make the interface react to user actions and introduce UI state in Jetpack Compose.
 
 ## Learning Goals
 
-- problem, target users, and product goal;
-- functional requirements (FR);
-- acceptance criteria (AC);
-- Sprint scope and out-of-scope decisions;
-- basic Jetpack Compose;
-- workflow: **SPEC → BUILD → VALIDATE → EXPLAIN → COMMIT**.
+- state in declarative UI;
+- events and event handlers;
+- `remember` and `mutableStateOf`;
+- state-driven rendering;
+- user feedback.
 
 ## Required Structure
 
 ```text
 projects/team-XX/
 ├── app/
-├── SPRINT-01.md
-├── docs/specs/SPEC-001.md
-└── evidence/sprint-01/first-screen.png
+├── SPRINT-02.md
+├── docs/specs/SPEC-002.md
+└── evidence/sprint-02/
+    ├── before-interaction.png
+    └── after-interaction.png
 ```
 
 ## Step-by-Step
 
-### 1. Define the Product
+### 1. Synchronize and Create the Branch
 
-In `SPRINT-01.md`, document:
+Confirm Sprint 01 was merged, synchronize the fork's `main`, then create `team-XX/sprint-02`.
 
-```text
-Product Name
-Problem
-Target Users
-Product Goal
-Initial Features
+### 2. Choose One Meaningful Interaction
+
+Examples: select an option, toggle favorite, show/hide information, increment a quantity, change a filter, or update a visible message. It must make sense for the product.
+
+### 3. Write SPEC-002
+
+Define initial state, user action, expected state change, visible result, constraints, and acceptance criteria.
+
+### 4. Implement State
+
+Use a state value appropriate to the feature. A simple Boolean pattern may look like:
+
+```kotlin
+var selected by remember { mutableStateOf(false) }
 ```
 
-A problem must express a user need, not only a domain.
+The team must understand what each part does and use a different state type when appropriate.
 
-Weak: `We will create a gym app.`  
-Better: `People beginning a fitness routine may have difficulty organizing and tracking simple workouts consistently.`
+### 5. Connect Event → State → UI
 
-### 2. Create SPEC-001
-
-Create `projects/team-XX/docs/specs/SPEC-001.md` using `templates/SPEC-TEMPLATE.md`.
-
-It must contain context, task, functional requirements, constraints, measurable acceptance criteria, validation procedure, and out-of-scope items.
-
-### 3. Define the First Screen
-
-It must contain at least:
-
-- application name;
-- one description or slogan;
-- one primary action button;
-- visually organized content;
-- spacing and alignment.
-
-Navigation is not required yet.
-
-### 4. Implement with Jetpack Compose
-
-Use, when appropriate:
+Validate the chain:
 
 ```text
-@Composable
-Text
-Button
-Column
-Row
-Spacer
-Modifier
-padding
-fillMaxSize
-Arrangement
-Alignment
-MaterialTheme
+Initial state → user action → updated state → visible UI response
 ```
 
-### 5. Build, Run, and Validate
+### 6. Validate Regression
 
-1. Build the app.
-2. Run on emulator or physical device.
-3. Compare the visible result with SPEC-001.
-4. Check every acceptance criterion.
-5. Fix discrepancies before submission.
+Confirm Sprint 01 still works and the new interaction is repeatable without crashes.
 
-### 6. Add Evidence
+### 7. Add Evidence
 
-Save `projects/team-XX/evidence/sprint-01/first-screen.png` and reference it from `SPRINT-01.md`.
+Save before/after screenshots in `evidence/sprint-02/`.
 
-### 7. Explain the Implementation
+### 8. Complete the Sprint Report
 
-The team must be able to show which requirement is represented by each visible UI element, where it appears in code, and how its acceptance criterion was validated.
+Explain what state was introduced, what event changes it, which UI reacts, and which FR/AC were validated.
 
 ## Rules for Using an LLM
 
@@ -139,29 +113,29 @@ Do not submit code that no team member can explain. During review, any member ma
 
 ### Suggested LLM Uses
 
-Use the LLM to improve a problem statement, review FRs/ACs, explain Compose components, review a small Composable, or diagnose a real build error. Do not ask it to build the entire app at once.
+Ask the LLM to explain state versus a normal variable, `remember`, `mutableStateOf`, why UI is not updating, or to generate test scenarios from SPEC-002.
 
 ## Acceptance Criteria
 
-- AC-01 — Product name, problem, target users, and goal are documented.
-- AC-02 — `SPEC-001.md` exists.
-- AC-03 — SPEC contains functional requirements and measurable ACs.
-- AC-04 — First screen uses Jetpack Compose.
-- AC-05 — App name is visible.
-- AC-06 — Description/slogan is visible.
-- AC-07 — Primary action button is visible.
-- AC-08 — App builds successfully.
-- AC-09 — App runs without crashing.
-- AC-10 — Implementation satisfies SPEC-001.
-- AC-11 — Team can explain the implementation.
+- AC-01 — SPEC-002 exists.
+- AC-02 — Meaningful interaction is defined.
+- AC-03 — App contains at least one state value.
+- AC-04 — User event changes the state.
+- AC-05 — Visible UI reacts to state change.
+- AC-06 — Initial and updated states behave correctly.
+- AC-07 — Previous functionality still works.
+- AC-08 — App builds/runs without crashing.
+- AC-09 — Before/after evidence exists.
+- AC-10 — Team can explain the state flow.
 
 ## Deliverables
 
 ```text
 projects/team-XX/app/
-projects/team-XX/SPRINT-01.md
-projects/team-XX/docs/specs/SPEC-001.md
-projects/team-XX/evidence/sprint-01/first-screen.png
+projects/team-XX/SPRINT-02.md
+projects/team-XX/docs/specs/SPEC-002.md
+projects/team-XX/evidence/sprint-02/before-interaction.png
+projects/team-XX/evidence/sprint-02/after-interaction.png
 ```
 
 ## Submission Rules
@@ -181,13 +155,13 @@ Never modify another team's folder.
 Synchronize the fork with the current course `main`, then create the branch **before** starting the Sprint work:
 
 ```text
-team-XX/sprint-01
+team-XX/sprint-02
 ```
 
 Example for Team 03:
 
 ```text
-team-03/sprint-01
+team-03/sprint-02
 ```
 
 ### Commits
@@ -195,10 +169,10 @@ team-03/sprint-01
 Use small, meaningful commits. Recommended pattern:
 
 ```text
-docs: define SPEC-001
+docs: define SPEC-002
 feat: implement <feature>
 fix: correct <problem>
-docs: add Sprint 01 validation evidence
+docs: add Sprint 02 validation evidence
 ```
 
 Avoid messages such as `update`, `changes`, `final`, `work`, or `commit 1`.
@@ -210,26 +184,26 @@ Push/publish the Sprint branch to the team's fork and open **one Pull Request** 
 ```text
 base repository: brenofeliix/mobile-development-2026-2
 base branch: main
-compare branch: team-XX/sprint-01
+compare branch: team-XX/sprint-02
 ```
 
 PR title:
 
 ```text
-[Sprint 01] Team XX — Product Definition & First Screen
+[Sprint 02] Team XX — State & User Interaction
 ```
 
 PR description:
 
 ```md
 ## Sprint
-SPRINT 01 — Product Definition & First Screen
+SPRINT 02 — State & User Interaction
 
 ## Summary
 Briefly describe what was implemented.
 
 ## Specification
-Link SPEC-001.
+Link SPEC-002.
 
 ## Validation
 - [ ] Application builds successfully.
@@ -248,10 +222,9 @@ If changes are requested, continue on the **same branch**. Commit and push the c
 
 ## Definition of Done
 
-- [ ] Product concept documented.
-- [ ] SPEC-001 complete.
-- [ ] First screen implemented.
-- [ ] Build/run validated.
-- [ ] Evidence included.
-- [ ] AI usage documented.
+- [ ] SPEC-002 complete.
+- [ ] State/interaction implemented.
+- [ ] UI responds visibly.
+- [ ] Previous functionality preserved.
+- [ ] Evidence and AI usage documented.
 - [ ] PR submitted.

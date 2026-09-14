@@ -1,98 +1,61 @@
-# SPRINT 01 — Product Definition & First Screen
+# SPRINT 04 — User Input, Forms & Validation
 
-**Deadline:** 14/09/2026  
-**Purpose:** transform an app idea into a defined product, write the first formal specification, and implement the first screen with Jetpack Compose.
+**Deadline:** 19/10/2026  
+**Purpose:** collect data from the user safely and provide clear validation feedback.
 
 ## Learning Goals
 
-- problem, target users, and product goal;
-- functional requirements (FR);
-- acceptance criteria (AC);
-- Sprint scope and out-of-scope decisions;
-- basic Jetpack Compose;
-- workflow: **SPEC → BUILD → VALIDATE → EXPLAIN → COMMIT**.
+- controlled input in Compose;
+- form state;
+- validation rules;
+- error messages;
+- valid/invalid flows.
 
 ## Required Structure
 
 ```text
 projects/team-XX/
 ├── app/
-├── SPRINT-01.md
-├── docs/specs/SPEC-001.md
-└── evidence/sprint-01/first-screen.png
+├── SPRINT-04.md
+├── docs/specs/SPEC-004.md
+└── evidence/sprint-04/
+    ├── valid-input.png
+    └── invalid-input.png
 ```
 
 ## Step-by-Step
 
-### 1. Define the Product
+### 1. Create `team-XX/sprint-04`
 
-In `SPRINT-01.md`, document:
+Synchronize `main` first.
 
-```text
-Product Name
-Problem
-Target Users
-Product Goal
-Initial Features
-```
+### 2. Choose Meaningful User Input
 
-A problem must express a user need, not only a domain.
+Examples: create task, register place, search term, quantity, note, profile field, or product preference.
 
-Weak: `We will create a gym app.`  
-Better: `People beginning a fitness routine may have difficulty organizing and tracking simple workouts consistently.`
+### 3. Write SPEC-004
 
-### 2. Create SPEC-001
+Define fields, required/optional status, allowed formats/values, validation rules, error feedback, and successful behavior.
 
-Create `projects/team-XX/docs/specs/SPEC-001.md` using `templates/SPEC-TEMPLATE.md`.
+### 4. Implement the Form
 
-It must contain context, task, functional requirements, constraints, measurable acceptance criteria, validation procedure, and out-of-scope items.
+Use appropriate components such as `TextField`, `OutlinedTextField`, `Button`, `Checkbox`, `Switch`, `RadioButton`, or `DropdownMenu`. Use only what the feature needs.
 
-### 3. Define the First Screen
+### 5. Implement Validation
 
-It must contain at least:
+At minimum demonstrate one valid and one invalid scenario. Invalid input must produce visible feedback.
 
-- application name;
-- one description or slogan;
-- one primary action button;
-- visually organized content;
-- spacing and alignment.
+### 6. Test Both Scenarios
 
-Navigation is not required yet.
+Verify rules, feedback, successful input, navigation, and previous features.
 
-### 4. Implement with Jetpack Compose
+### 7. Add Evidence
 
-Use, when appropriate:
+Save `valid-input.png` and `invalid-input.png`.
 
-```text
-@Composable
-Text
-Button
-Column
-Row
-Spacer
-Modifier
-padding
-fillMaxSize
-Arrangement
-Alignment
-MaterialTheme
-```
+### 8. Complete the Sprint Report
 
-### 5. Build, Run, and Validate
-
-1. Build the app.
-2. Run on emulator or physical device.
-3. Compare the visible result with SPEC-001.
-4. Check every acceptance criterion.
-5. Fix discrepancies before submission.
-
-### 6. Add Evidence
-
-Save `projects/team-XX/evidence/sprint-01/first-screen.png` and reference it from `SPRINT-01.md`.
-
-### 7. Explain the Implementation
-
-The team must be able to show which requirement is represented by each visible UI element, where it appears in code, and how its acceptance criterion was validated.
+Explain each field, each validation rule, where each rule is implemented, and how both scenarios were tested.
 
 ## Rules for Using an LLM
 
@@ -139,29 +102,29 @@ Do not submit code that no team member can explain. During review, any member ma
 
 ### Suggested LLM Uses
 
-Use the LLM to improve a problem statement, review FRs/ACs, explain Compose components, review a small Composable, or diagnose a real build error. Do not ask it to build the entire app at once.
+Ask the LLM to review validation rules, generate boundary cases from SPEC-004, explain form state, review a small input component, or suggest clearer user-facing error messages without changing the business rule.
 
 ## Acceptance Criteria
 
-- AC-01 — Product name, problem, target users, and goal are documented.
-- AC-02 — `SPEC-001.md` exists.
-- AC-03 — SPEC contains functional requirements and measurable ACs.
-- AC-04 — First screen uses Jetpack Compose.
-- AC-05 — App name is visible.
-- AC-06 — Description/slogan is visible.
-- AC-07 — Primary action button is visible.
-- AC-08 — App builds successfully.
-- AC-09 — App runs without crashing.
-- AC-10 — Implementation satisfies SPEC-001.
-- AC-11 — Team can explain the implementation.
+- AC-01 — SPEC-004 exists.
+- AC-02 — Meaningful user-input flow exists.
+- AC-03 — Input values use UI state.
+- AC-04 — At least one validation rule is implemented.
+- AC-05 — Invalid input produces visible feedback.
+- AC-06 — Valid input is accepted according to the SPEC.
+- AC-07 — Valid and invalid evidence exists.
+- AC-08 — Previous functionality still works.
+- AC-09 — App builds/runs successfully.
+- AC-10 — Team can explain validation logic.
 
 ## Deliverables
 
 ```text
 projects/team-XX/app/
-projects/team-XX/SPRINT-01.md
-projects/team-XX/docs/specs/SPEC-001.md
-projects/team-XX/evidence/sprint-01/first-screen.png
+projects/team-XX/SPRINT-04.md
+projects/team-XX/docs/specs/SPEC-004.md
+projects/team-XX/evidence/sprint-04/valid-input.png
+projects/team-XX/evidence/sprint-04/invalid-input.png
 ```
 
 ## Submission Rules
@@ -181,13 +144,13 @@ Never modify another team's folder.
 Synchronize the fork with the current course `main`, then create the branch **before** starting the Sprint work:
 
 ```text
-team-XX/sprint-01
+team-XX/sprint-04
 ```
 
 Example for Team 03:
 
 ```text
-team-03/sprint-01
+team-03/sprint-04
 ```
 
 ### Commits
@@ -195,10 +158,10 @@ team-03/sprint-01
 Use small, meaningful commits. Recommended pattern:
 
 ```text
-docs: define SPEC-001
+docs: define SPEC-004
 feat: implement <feature>
 fix: correct <problem>
-docs: add Sprint 01 validation evidence
+docs: add Sprint 04 validation evidence
 ```
 
 Avoid messages such as `update`, `changes`, `final`, `work`, or `commit 1`.
@@ -210,26 +173,26 @@ Push/publish the Sprint branch to the team's fork and open **one Pull Request** 
 ```text
 base repository: brenofeliix/mobile-development-2026-2
 base branch: main
-compare branch: team-XX/sprint-01
+compare branch: team-XX/sprint-04
 ```
 
 PR title:
 
 ```text
-[Sprint 01] Team XX — Product Definition & First Screen
+[Sprint 04] Team XX — User Input, Forms & Validation
 ```
 
 PR description:
 
 ```md
 ## Sprint
-SPRINT 01 — Product Definition & First Screen
+SPRINT 04 — User Input, Forms & Validation
 
 ## Summary
 Briefly describe what was implemented.
 
 ## Specification
-Link SPEC-001.
+Link SPEC-004.
 
 ## Validation
 - [ ] Application builds successfully.
@@ -248,10 +211,9 @@ If changes are requested, continue on the **same branch**. Commit and push the c
 
 ## Definition of Done
 
-- [ ] Product concept documented.
-- [ ] SPEC-001 complete.
-- [ ] First screen implemented.
-- [ ] Build/run validated.
-- [ ] Evidence included.
-- [ ] AI usage documented.
+- [ ] SPEC-004 complete.
+- [ ] Form/input flow implemented.
+- [ ] Validation implemented.
+- [ ] Valid/invalid scenarios tested.
+- [ ] Evidence and AI usage documented.
 - [ ] PR submitted.
