@@ -5,23 +5,23 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [DiagnosticEntity::class], version = 1, exportSchema = false)
+@Database(entities = [Verification::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun diagnosticDao(): DiagnosticDao
+    abstract fun verificationDao(): VerificationDao
 
     companion object {
+        @Volatile
         private var instance: AppDatabase? = null
 
-        fun getDatabase(context: Context): AppDatabase {
-            if (instance == null) {
-                instance = Room.databaseBuilder(
+        // Garante que existe só um banco em todo o app.
+        fun get(context: Context): AppDatabase =
+            instance ?: synchronized(this) {
+                Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
                     "wiflux.db"
-                ).build()
+                ).build().also { instance = it }
             }
-            return instance!!
-        }
     }
 }
