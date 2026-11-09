@@ -22,7 +22,7 @@ Entidade `Verification` (tabela `verifications`): `id` (PK autoincrement), `room
 | `MainActivity.kt` | Cria o ViewModel e passa `history` e `onSave` para a Home |
 | `HomeScreen.kt` | Chama `onSave` após validar e sortear; exibe `HistoryList` |
 
-Dependências adicionadas: Room (runtime, ktx, compiler via KSP) e `lifecycle-viewmodel-compose`.
+Dependências: Room 2.8.4 (runtime, ktx, compiler via KSP 2.3.6) e `lifecycle-viewmodel-compose`.
 
 ## 4. Fluxo de salvar
 
@@ -34,7 +34,7 @@ Usuário digita o cômodo → validação (mín. 3 letras) → status é sortead
 
 ## 6. Resultado da reinicialização
 
-Preencher após o teste: criar uma verificação, fechar o app por completo (remover dos recentes), reabrir e confirmar que o registro continua na lista.
+Código e prints entregues pela Geovanna Gaspar (teste em 07/11/2026). Foram criadas duas verificações ("sala" e "quarto"), o app foi fechado por completo e reaberto. Ao reabrir, a tela voltou ao estado inicial (medidor "Aguardando", campo vazio) e o card "Últimas verificações" continuou mostrando os dois registros com a data/hora originais.
 
 - [x] Registro criado (`evidence/sprint-05/data-created.png`)
 - [x] Registro restaurado após reiniciar (`evidence/sprint-05/data-restored.png`)
@@ -43,12 +43,12 @@ Preencher após o teste: criar uma verificação, fechar o app por completo (rem
 
 | Item | Resposta da equipe |
 | --- | --- |
-| LLM/ferramenta usada | Claude (Anthropic) |
-| Tarefa apoiada pela LLM | Escolha entre Room e DataStore, modelagem da entidade/DAO/banco e organização do código de dados |
-| Principal sugestão recebida | Usar Room com uma única entidade `Verification`, `Flow` no DAO e um `ViewModel` entre a tela e o banco |
-| O que a equipe alterou manualmente | Criação dos arquivos e códigos novos. |
-| Como o resultado foi validado | Testamos o aplicativo no android Studio e validamos ele. |
+| LLM/ferramenta usada | Claude (Anthropic), em chat e no Claude Code |
+| Tarefa apoiada pela LLM | Escolha entre Room e DataStore; modelagem de Entity/DAO/Database; organização com ViewModel; revisão do Git e conferência entre a documentação e o código antes do commit |
+| Principal sugestão recebida | Room com uma única entidade `Verification`, `Flow` no DAO e um `ViewModel` entre a tela e o banco; manter `rememberSaveable` na Home |
+| O que a equipe alterou manualmente | Decidiu manter o código da Geovanna em vez do `DiagnosticEntity` inicial e removeu os arquivos `Diagnostic*`; manteve o medidor redesenhado; restaurou `rememberSaveable` na `HomeScreen` para preservar a validação da Sprint 04; descartou arquivos de projeto-modelo criados por engano pelo Android Studio |
+| Como o resultado foi validado | Geovanna executou o app no Android Studio (criar, fechar e reabrir), registrado nos dois prints. O build foi conferido pela equipe em 09/11/2026 com `Assemble Project`, sem erros |
 
 ## 8. Critérios de aceite
 
-Ver SPEC-005, seção 5. Marcar cada um após validar no emulador/celular.
+Ver SPEC-005, seção 7. Resultado de cada um na seção 11 da SPEC.
