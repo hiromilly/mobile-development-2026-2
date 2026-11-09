@@ -7,12 +7,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.team03.wifi.data.HistoryViewModel
 import com.team03.wifi.ui.theme.WifiTheme
 
 // Rotas de navegação (Sprint 03)
@@ -25,6 +29,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             WifiTheme {
+                // Sprint 05: ViewModel que conversa com o banco Room
+                val historyViewModel: HistoryViewModel = viewModel()
+                val history by historyViewModel.history.collectAsState()
+
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     val navController = rememberNavController()
 
@@ -37,6 +45,10 @@ class MainActivity : ComponentActivity() {
                             HomeScreen(
                                 onSeeDetails = { status ->
                                     navController.navigate("details/${status.name}")
+                                },
+                                history = history,
+                                onSave = { roomName, status ->
+                                    historyViewModel.save(roomName, status.name)
                                 }
                             )
                         }
